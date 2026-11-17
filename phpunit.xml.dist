@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Run from a Magento install that has Nebula: vendor/bin/phpunit -c vendor/nebula/module-admin-skins/phpunit.xml.dist -->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/12.5/phpunit.xsd"
+         bootstrap="../../autoload.php">
+    <testsuites>
+        <testsuite name="unit">
+            <directory>Test/Unit</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

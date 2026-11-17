@@ -58,6 +58,14 @@ Setting Slate first is tidy but not required. When the saved skin is no longer i
 
 The file format, the sections and dark mode are documented on the Create your own skin page of the Nebula documentation (Theming › Create your own skin). Any file here is a working example to start from.
 
+## Tests
+
+`Test/Unit/SkinContrastTest.php` holds these skins to the same 4.5:1 checks Nebula runs on its own: grid row text, the Yes and No badge labels, and the label on the primary fill, in light and dark mode. Run it from a Magento install that has this package:
+
+```sh
+vendor/bin/phpunit -c vendor/nebula/module-admin-skins/phpunit.xml.dist
+```
+
 ## License
 
 Distributed under the [Nebula Community License (NCL) v1.0](LICENSE.md). Composer uses `proprietary` because NCL has no registered SPDX identifier.
