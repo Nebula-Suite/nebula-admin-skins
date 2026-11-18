@@ -54,6 +54,19 @@ php bin/magento setup:upgrade
 
 Setting Slate first is tidy but not required. When the saved skin is no longer installed, Nebula falls back to Slate on its own.
 
+## Primary fills
+
+Four skins nudge their primary button fill from the published palette so the label clears 4.5:1 (WCAG AA for normal text). Nebula's own skins keep no exceptions, and neither do these.
+
+| Skin | Mode | Fill | Was |
+| --- | --- | --- | --- |
+| `flat` | dark | `#6063f1` | `#6366f1` (4.47:1) |
+| `indigo-compact` | dark | `#6063f1` | `#6366f1` (4.47:1) |
+| `nord` | light | `#5477a3` | `#5e81ac` (4.40:1) |
+| `nostalgia` | light and dark | `#cf4704` to `#a83c04` | `#f65405` to `#c34706` |
+
+When you copy one of these skins into your own module, keep the adjusted fill, or measure the pair again.
+
 ## Writing your own
 
 The file format, the sections and dark mode are documented on the Create your own skin page of the Nebula documentation (Theming › Create your own skin). Any file here is a working example to start from.

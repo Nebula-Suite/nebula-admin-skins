@@ -18,18 +18,6 @@ class SkinContrastTest extends TestCase
     private const PRIMARY_VAR = '--nebula-button-primary-bg';
 
     /**
-     * Fills no foreground can rescue. They quote a published palette (`#6366f1` is Tailwind's
-     * `indigo-500`, `#5e81ac` is `nord10`), and editing them stops the skin being that palette.
-     *
-     * @var array<string, float> skin/mode => the ratio measured when it was recorded
-     */
-    private const AWAITING_A_NEW_FILL = [
-        'flat/dark' => 4.47,
-        'indigo-compact/dark' => 4.47,
-        'nord/custom' => 4.40,
-    ];
-
-    /**
      * @param array<string, string> $variables
      */
     #[DataProvider('skinModes')]
@@ -57,13 +45,21 @@ class SkinContrastTest extends TestCase
         $contrast = new Contrast();
         $ratio = $contrast->ratio($primary, $contrast->foregroundFor($primary));
 
-        if (isset(self::AWAITING_A_NEW_FILL[$skin . '/' . $mode])) {
-            $this->assertLessThan(Contrast::AA, $ratio, $skin . '/' . $mode . ' now clears AA; delete its exception.');
-
-            return;
-        }
-
         $this->assertGreaterThanOrEqual(Contrast::AA, $ratio, sprintf('%s/%s primary %s', $skin, $mode, $primary));
+    }
+
+    /**
+     * The loader computes a foreground only for a flat fill, so a gradient keeps the stylesheet's
+     * white label and every stop has to carry it.
+     */
+    #[DataProvider('gradientStops')]
+    public function testEveryGradientStopCarriesTheDefaultForeground(string $skin, string $mode, string $stop): void
+    {
+        $this->assertGreaterThanOrEqual(
+            Contrast::AA,
+            (new Contrast())->ratio($stop, Contrast::ON_DARK),
+            sprintf('%s/%s gradient stop %s under a white label', $skin, $mode, $stop)
+        );
     }
 
     public function testEverySkinIsCovered(): void
@@ -98,6 +94,28 @@ class SkinContrastTest extends TestCase
                 $primary = $skin[$mode][self::PRIMARY_VAR] ?? null;
                 if (is_string($primary) && preg_match('/^#([0-9a-f]{3}|[0-9a-f]{6})$/i', $primary)) {
                     $cases[$skin['id'] . '/' . $mode] = [$skin['id'], $mode, $primary];
+                }
+            }
+        }
+
+        return $cases;
+    }
+
+    /**
+     * @return array<string, array{string, string, string}>
+     */
+    public static function gradientStops(): array
+    {
+        $cases = [];
+        foreach (self::skins() as $skin) {
+            foreach (['custom', 'dark'] as $mode) {
+                $primary = $skin[$mode][self::PRIMARY_VAR] ?? null;
+                if (!is_string($primary) || !str_contains($primary, 'gradient(')) {
+                    continue;
+                }
+                preg_match_all('/#(?:[0-9a-f]{6}|[0-9a-f]{3})\b/i', $primary, $stops);
+                foreach ($stops[0] as $stop) {
+                    $cases[$skin['id'] . '/' . $mode . '/' . $stop] = [$skin['id'], $mode, $stop];
                 }
             }
         }
