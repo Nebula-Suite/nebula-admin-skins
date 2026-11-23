@@ -81,4 +81,4 @@ vendor/bin/phpunit -c vendor/nebula/module-admin-skins/phpunit.xml.dist
 
 ## License
 
-Distributed under the [Nebula Community License (NCL) v1.0](LICENSE.md). Composer uses `proprietary` because NCL has no registered SPDX identifier.
+Nebula Admin Skins is free and open source under the dual [OSL 3.0](https://opensource.org/license/osl-3-0) and [AFL 3.0](https://opensource.org/license/afl-3-0) licenses (see [LICENSE.md](LICENSE.md)). Composer's `license` field is `["OSL-3.0", "AFL-3.0"]`.
