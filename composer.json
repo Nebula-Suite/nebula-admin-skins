@@ -2,7 +2,10 @@
     "name": "nebula/module-admin-skins",
     "description": "Thirteen extra colour schemes for the Nebula admin theme for Magento Open Source and MageOS.",
     "type": "magento2-module",
-    "license": "proprietary",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
     "authors": [
         {
             "name": "Qoliber",
@@ -21,13 +24,6 @@
         "files": [
             "registration.php"
         ]
-    },
-    "extra": {
-        "nebula-license": {
-            "name": "Nebula Community License",
-            "version": "1.0",
-            "file": "LICENSE.md"
-        }
     },
     "homepage": "https://github.com/Nebula-Suite/nebula-admin-skins",
     "support": {
