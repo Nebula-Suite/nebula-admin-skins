@@ -1,4 +1,4 @@
-Copyright (c) 2026 Nebula Contributors, Qoliber and Siteation.
+Copyright (c) 2026 Qoliber and Siteation.
 
 This package is free and open source under the dual OSL 3.0 and AFL 3.0 licenses.
 
