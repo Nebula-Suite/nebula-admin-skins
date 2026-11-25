@@ -15,12 +15,14 @@ The colour values are the published palettes, mapped onto Nebula's colour tokens
 
 ### Dracula theme
 
+Source: https://github.com/dracula/dracula-theme
+
 SPDX: MIT
 
 ```text
 MIT License
 
-Copyright (c) 2016-present Dracula Theme
+Copyright (c) 2023 Dracula Theme
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -43,12 +45,14 @@ SOFTWARE.
 
 ### Nord
 
+Source: https://github.com/nordtheme/nord
+
 SPDX: MIT
 
 ```text
 The MIT License (MIT)
 
-Copyright (c) 2016-present Sven Greb
+Copyright (c) 2016-present Sven Greb <development@svengreb.de> (https://www.svengreb.de)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
